@@ -1,0 +1,29 @@
+{
+    "name": "diasfs/platypus",
+    "type": "library",
+    "license": "MIT",
+    "description": "A simple PHP framework to build generic web sites",
+    "keywords": [
+        "framework"
+    ],
+    "authors": [
+        {
+            "name": "Fábio Dias",
+            "email": "fabio@dias.poa.br",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/diasfs/platypus",
+    "require": {
+        "php": ">=5.5.0",
+        "twig/twig": "^2.11",
+        "gabordemooij/redbean": "^5.3",
+        "adbario/php-dot-notation": "^2.2",
+        "mattketmo/camel": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Platypus\\": "src"
+        }
+    }
+}
