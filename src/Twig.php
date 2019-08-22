@@ -6,9 +6,19 @@ class Twig
 {
     public static $twig;
 
-    public static function init($templatesPaths, $templatesCache = false, bool $debug = false): \Twig_Environment
+    public static function init($templatesPaths, $templatesCache = false, bool $debug = false): \Twig\Environment
     {
-        $twig = new \Twig_Environment(new \Twig_Loader_Filesystem($templatesPaths), [
+        if (is_string($templatesCache) && !file_exists($templatesCache)) {
+            mkdir($templatesCache, 0777, true);
+        }
+
+        foreach ($templatesPaths as $path) {
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+        }
+
+        $twig = new \Twig\Environment(new \Twig\Loader\FilesystemLoader($templatesPaths), [
             'debug' => $debug,
             'cache' => $templatesCache
         ]);

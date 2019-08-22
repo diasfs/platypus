@@ -46,12 +46,20 @@ class R extends \RedBeanPHP\R
 { };
 
 
-$host = Config::get('db.host');
-$user = Config::get('db.user');
-$pass = Config::get('db.password');
-$dbname = Config::get('db.dbname');
 
-R::setup("mysql:host={$host};dbname={$dbname}", $user, $pass);
+$type = Config::get('db.type', 'mysql');
+
+if ('sqlite' == $type) {
+    $path = Config::get('db.path');
+    R::setup("sqlite:{$path}");
+} else {
+    $host = Config::get('db.host');
+    $user = Config::get('db.user');
+    $pass = Config::get('db.password');
+    $dbname = Config::get('db.dbname');
+    R::setup("{$type}:host={$host};dbname={$dbname}", $user, $pass);
+}
+
 R::getRedBean()->setBeanHelper(new PlatypusSimpleFacadeBeanHelper);
 
 R::ext('xdispense', function ($type) {
