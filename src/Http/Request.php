@@ -2,7 +2,7 @@
 
 namespace Platypus\Http;
 
-function array_get(array $array, $key = null, $default = null, bool $caseInsensitive = false)
+function array_get(array $array, $key = null, $default = null, $caseInsensitive = false)
 {
     if (is_null($key)) {
         return $array;
