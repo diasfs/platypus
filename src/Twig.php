@@ -27,7 +27,7 @@ class Twig
         return $twig;
     }
 
-    public static function render(string $name, array $data = []): string
+    public static function render(string $name, array $data = [])
     {
         $twig = static::$twig;
         if (is_null($twig)) {
