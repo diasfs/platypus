@@ -2,28 +2,26 @@
 
 namespace Platypus;
 
-use Adbar\Dot;
+use Jasny\DotKey;
 
 class Config
 {
     public static $data = [];
     public static $dot = null;
 
+    public static function load($path)
+    {
+        $data = (array) require($path);
+        static::$data = array_merge_recursive(static::$data, $data);
+        static::$dot = new DotKey($data);
+    }
+
     public static function getDot()
     {
         if (null == static::$dot) {
-            static::$dot = new Dot(array());
+            static::$dot = new DotKey(array());
         }
         return static::$dot;
-    }
-
-    public static function load($path)
-    {
-        $dot = static::getDot();
-        $data = (array) require($path);
-        $dot->mergeRecursive($data);
-
-        static::$data = $dot->all();
     }
 
     public static function get($key, $default = null)
@@ -35,7 +33,6 @@ class Config
     public static function set($key, $value = null)
     {
         $dot = static::getDot();
-        $dot->set($key, $value);
-        static::$data = $dot->all();
+        static::$data = $dot->set($key, $value);
     }
 }

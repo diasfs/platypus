@@ -15,11 +15,16 @@
     ],
     "homepage": "https://github.com/diasfs/platypus",
     "require": {
-        "php": ">=5.5.0",
-        "twig/twig": "^2.11",
+        "php": ">=5.4.7",
+        "twig/twig": "^1.42",
         "gabordemooij/redbean": "^5.3",
-        "adbario/php-dot-notation": "^2.2",
-        "mattketmo/camel": "^1.1"
+        "mattketmo/camel": "^1.1",
+        "jasny/dotkey": "^1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "5.4.7"
+        }
     },
     "autoload": {
         "psr-4": {
