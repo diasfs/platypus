@@ -6,7 +6,7 @@ class Twig
 {
     public static $twig;
 
-    public static function init($templatesPaths, $templatesCache = false, bool $debug = false): \Twig\Environment
+    public static function init($templatesPaths, $templatesCache = false, $debug = false)
     {
         if (is_string($templatesCache) && !file_exists($templatesCache)) {
             mkdir($templatesCache, 0777, true);
